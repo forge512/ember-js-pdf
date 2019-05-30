@@ -163,7 +163,9 @@ const JsPdfComponent = Component.extend({
       }
     },
     createPdfInstance() {
-      return get(this, "content");
+      let instance = get(this, "content");
+      get(this, "src");
+      return instance;
     }
   }
 });
