@@ -127,6 +127,10 @@ const JsPdfComponent = Component.extend({
     "orientation",
     "unit",
     "format",
+    "filename",
+    "title",
+    "subject",
+    "author",
     "compressPdf",
     function() {
       const jsPdf = get(this, "content");
@@ -134,6 +138,13 @@ const JsPdfComponent = Component.extend({
 
       assert("{{js-pdf}} requires an array of rendering steps", isArray(steps));
       addStepsToJsPdf(jsPdf, steps);
+
+      jsPdf.setProperties({
+        filename: this.filename,
+        title: this.title,
+        subject: this.subject,
+        author: this.author
+      });
 
       return jsPdf.output("dataurlstring");
     }
